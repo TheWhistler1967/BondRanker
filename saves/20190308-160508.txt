@@ -1,0 +1,106 @@
+#$&#$%^&*
+['Nick', 'Graham', 'Cindy', 'Stu', 'AVERAGE']
+['Cold Open', 'Theme Song', 'Gadgets', 'Villians', 'Bond Girls', 'Plot', 'OVERALL']
+['Dr No', 'FRWL', 'Thunderball', 'Goldfinger', 'You Only Live Twice', 'OHMSS', 'Diamonds Are Forever', 'Live and Let Die', 'Man with Golden Gun', 'Spy Who Loved Me', 'Moonraker', 'For Your Eyes Only', 'Octopussy', 'A View to Kill']
+['Living Dylights', 'Licence to Kill', 'Goldeneye', 'Tomorrow Never Dies', 'World is not Enough', 'Die Another Day']
+0
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~
+Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~
+Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~
+Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~
+For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~
+Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~
+A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Nick
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~
+Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~
+Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~
+Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~
+For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~
+Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~
+A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Graham
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~
+Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~
+Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~
+Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~
+For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~
+Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~
+A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Cindy
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~Live and Let Die~
+Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~Man with Golden Gun~
+Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~Spy Who Loved Me~
+Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~
+For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~For Your Eyes Only~
+Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~Octopussy~
+A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Stu

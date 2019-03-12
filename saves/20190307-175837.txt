@@ -1,0 +1,106 @@
+#$&#$%^&*
+['Nick', 'Graham', 'Cindy', 'Stu', 'AVERAGE']
+['Cold Open', 'Theme Song', 'Gadgets', 'Villians', 'Bond Girls', 'Plot', 'OVERALL']
+['Dr No', 'FRWL', 'Thunderball', 'Goldfinger', 'You Only Live Twice', 'OHMSS', 'Diamonds Are Forever', 'Live and Let Die', 'Man with Golden Gun', 'Spy Who Loved Me', 'Moonraker', 'For Your Eyes Only', 'Octopussy', 'A View to Kill']
+['Living Dylights', 'Licence to Kill', 'Goldeneye', 'Tomorrow Never Dies', 'World is not Enough', 'Die Another Day']
+0
+For Your Eyes Only~Live and Let Die~Moonraker~Goldfinger~Live and Let Die~Goldfinger~Live and Let Die~
+Spy Who Loved Me~A View to Kill~Thunderball~Live and Let Die~Thunderball~For Your Eyes Only~Goldfinger~
+Moonraker~Goldfinger~Live and Let Die~FRWL~A View to Kill~Moonraker~Spy Who Loved Me~
+A View to Kill~Diamonds Are Forever~Spy Who Loved Me~Man with Golden Gun~FRWL~A View to Kill~Octopussy~
+Thunderball~Thunderball~Octopussy~Moonraker~Dr No~Octopussy~A View to Kill~
+You Only Live Twice~Spy Who Loved Me~You Only Live Twice~A View to Kill~Spy Who Loved Me~Live and Let Die~Moonraker~
+Diamonds Are Forever~OHMSS~A View to Kill~Spy Who Loved Me~Man with Golden Gun~Thunderball~Man with Golden Gun~
+Goldfinger~You Only Live Twice~FRWL~Octopussy~Moonraker~Spy Who Loved Me~Thunderball~
+Octopussy~For Your Eyes Only~Goldfinger~Dr No~For Your Eyes Only~Dr No~You Only Live Twice~
+Live and Let Die~FRWL~Diamonds Are Forever~You Only Live Twice~Goldfinger~Man with Golden Gun~Diamonds Are Forever~
+Man with Golden Gun~Octopussy~Dr No~For Your Eyes Only~You Only Live Twice~Diamonds Are Forever~FRWL~
+FRWL~Moonraker~For Your Eyes Only~Thunderball~OHMSS~You Only Live Twice~Dr No~
+OHMSS~Man with Golden Gun~OHMSS~OHMSS~Octopussy~FRWL~OHMSS~
+-~-~Man with Golden Gun~Diamonds Are Forever~Diamonds Are Forever~OHMSS~For Your Eyes Only~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Dr No~Dr No~-~-~-~-~-~
+Nick
+Spy Who Loved Me~Goldfinger~FRWL~Goldfinger~Thunderball~Goldfinger~Goldfinger~
+You Only Live Twice~Live and Let Die~Thunderball~FRWL~A View to Kill~Dr No~Dr No~
+Octopussy~Thunderball~You Only Live Twice~Live and Let Die~FRWL~For Your Eyes Only~For Your Eyes Only~
+For Your Eyes Only~FRWL~Octopussy~You Only Live Twice~Live and Let Die~Octopussy~Octopussy~
+Moonraker~Diamonds Are Forever~Moonraker~Dr No~Dr No~Thunderball~Thunderball~
+Thunderball~You Only Live Twice~Spy Who Loved Me~Spy Who Loved Me~Goldfinger~You Only Live Twice~Live and Let Die~
+Man with Golden Gun~Moonraker~Goldfinger~Man with Golden Gun~Diamonds Are Forever~Moonraker~Man with Golden Gun~
+Live and Let Die~A View to Kill~Diamonds Are Forever~Diamonds Are Forever~For Your Eyes Only~A View to Kill~A View to Kill~
+FRWL~Spy Who Loved Me~A View to Kill~Moonraker~Man with Golden Gun~Diamonds Are Forever~Moonraker~
+A View to Kill~For Your Eyes Only~Live and Let Die~Thunderball~Octopussy~FRWL~You Only Live Twice~
+Goldfinger~Man with Golden Gun~Dr No~A View to Kill~Spy Who Loved Me~Man with Golden Gun~Spy Who Loved Me~
+Diamonds Are Forever~Octopussy~OHMSS~Octopussy~Moonraker~Spy Who Loved Me~FRWL~
+OHMSS~OHMSS~For Your Eyes Only~For Your Eyes Only~You Only Live Twice~OHMSS~Diamonds Are Forever~
+-~-~Man with Golden Gun~OHMSS~OHMSS~Live and Let Die~OHMSS~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Dr No~Dr No~-~-~-~-~-~
+Graham
+Spy Who Loved Me~Thunderball~Thunderball~Live and Let Die~Live and Let Die~Goldfinger~Goldfinger~
+Man with Golden Gun~Goldfinger~Live and Let Die~Man with Golden Gun~Thunderball~Dr No~Live and Let Die~
+You Only Live Twice~You Only Live Twice~FRWL~Dr No~Goldfinger~Octopussy~Thunderball~
+Octopussy~Man with Golden Gun~Goldfinger~Spy Who Loved Me~FRWL~Live and Let Die~Man with Golden Gun~
+For Your Eyes Only~Live and Let Die~Spy Who Loved Me~Octopussy~Spy Who Loved Me~FRWL~For Your Eyes Only~
+Goldfinger~FRWL~Octopussy~For Your Eyes Only~Man with Golden Gun~Thunderball~Octopussy~
+Live and Let Die~Octopussy~You Only Live Twice~FRWL~Octopussy~Man with Golden Gun~Spy Who Loved Me~
+FRWL~Spy Who Loved Me~Dr No~Goldfinger~Dr No~Spy Who Loved Me~FRWL~
+Thunderball~Diamonds Are Forever~Diamonds Are Forever~Thunderball~You Only Live Twice~For Your Eyes Only~Dr No~
+Diamonds Are Forever~For Your Eyes Only~For Your Eyes Only~Diamonds Are Forever~For Your Eyes Only~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~You Only Live Twice~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+Moonraker~Moonraker~Man with Golden Gun~OHMSS~OHMSS~OHMSS~OHMSS~
+A View to Kill~A View to Kill~Moonraker~Moonraker~Moonraker~Moonraker~Moonraker~
+-~-~A View to Kill~A View to Kill~A View to Kill~A View to Kill~A View to Kill~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Dr No~Dr No~-~-~-~-~-~
+Cindy
+Spy Who Loved Me~Goldfinger~Spy Who Loved Me~FRWL~Live and Let Die~Goldfinger~Goldfinger~
+For Your Eyes Only~Live and Let Die~Thunderball~Goldfinger~Thunderball~For Your Eyes Only~For Your Eyes Only~
+Moonraker~Diamonds Are Forever~FRWL~Man with Golden Gun~FRWL~Thunderball~Thunderball~
+Thunderball~A View to Kill~Goldfinger~You Only Live Twice~Dr No~Spy Who Loved Me~Dr No~
+You Only Live Twice~You Only Live Twice~Live and Let Die~Live and Let Die~Spy Who Loved Me~You Only Live Twice~Moonraker~
+A View to Kill~Spy Who Loved Me~Moonraker~Dr No~Man with Golden Gun~Dr No~Spy Who Loved Me~
+Octopussy~Thunderball~You Only Live Twice~Moonraker~A View to Kill~Moonraker~Octopussy~
+Man with Golden Gun~For Your Eyes Only~Diamonds Are Forever~Spy Who Loved Me~Goldfinger~Octopussy~Man with Golden Gun~
+Live and Let Die~Man with Golden Gun~A View to Kill~Diamonds Are Forever~Moonraker~A View to Kill~A View to Kill~
+Goldfinger~Octopussy~Octopussy~Thunderball~You Only Live Twice~Diamonds Are Forever~You Only Live Twice~
+FRWL~FRWL~Dr No~Octopussy~For Your Eyes Only~Man with Golden Gun~Live and Let Die~
+Diamonds Are Forever~OHMSS~For Your Eyes Only~A View to Kill~OHMSS~Live and Let Die~Diamonds Are Forever~
+OHMSS~Moonraker~OHMSS~For Your Eyes Only~Octopussy~OHMSS~FRWL~
+-~-~Man with Golden Gun~OHMSS~Diamonds Are Forever~FRWL~OHMSS~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Dr No~Dr No~-~-~-~-~-~
+Stu

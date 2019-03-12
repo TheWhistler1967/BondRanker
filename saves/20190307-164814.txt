@@ -1,0 +1,104 @@
+#$&#$%^&*
+['Nick', 'Graham', 'Cindy', 'Stu', 'AVERAGE']
+['Cold Open', 'Theme Song', 'Gadgets', 'Villians', 'Bond Girls', 'Plot', 'OVERALL']
+0
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Nick
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Graham
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Cindy
+Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~Dr No~
+FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~FRWL~
+Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~Thunderball~
+Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~Goldfinger~
+You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~You Only Live Twice~
+OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~OHMSS~
+Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~Diamonds Are Forever~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~
+Stu

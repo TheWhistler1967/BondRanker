@@ -1,234 +1,296 @@
-import tkinter as tk
-from tkinter import Tk, Canvas, Button, filedialog
-from PIL import ImageTk, Image
+import os
+
+import random
+from person import Person
+from recap import RecapWindow
+from tkinter import Tk, Canvas, Button, filedialog, Label
 import operator
 import time
 import contextlib
 with contextlib.redirect_stdout(None):
     from pygame import mixer
 
-check_code = "#$&#$%^&*" # Inserted into save files, and checked on open
+# Inserted into save files, and checked on open
+check_code = "#$&#$%^&*"
 
-# Global variables for window
-b = 10
+# Variables for window
+border = 10
 x_fin = 1500
 y_fin = 990
 x_sav, y_sav = 0, 0
 
-# Arrays
-colour_list = ["red", "dark orange2", "green", "steel blue", "black"]
-name_list = ["Nick", "Graham", "Cindy", "Stu", "AVERAGE"]
-global next_c
-next_c = 0
-connery = ["Dr No", "FRWL", "Thunderball", "Goldfinger", "You Only Live Twice", "OHMSS", "Diamonds Are Forever"]
-next_movie = ["Live and Let Die", "Man with Golden Gun", "Spy Who Loved Me", "Moonraker",
-              "For Your Eyes Only", "Octopussy", "A View to Kill", "---"]
-movie_colours = {"Dr No": "indian red", "FRWL": "red", "Thunderball": "SkyBlue1", "Goldfinger": "gold",
-                 "You Only": "khaki", "OHMSS": "snow", "Diamonds Are": "cyan", "Live and": "lime green",
-                 "Man with": "dark goldenrod", "Spy Who": "SlateGray4", "Moon": "ivory3", "For Your": "green yellow",
-                 "Octop": "wheat1", "A View": "orchid1"}
-person_colours = [["LightPink2", "LightPink1"], ["dark orange", "orange"],
-                  ["SeaGreen3", "SeaGreen2"], ["SkyBlue3", "SkyBlue1"]]
 
-# Image arrays for 'Recap'
-bond_girls = []
-bond_gadgets = []
-bond_villians = []
-bond_plot = []
-bond_cold = []
-bond_theme = [] # single image only
-theme_songs = []
+# --------------------
+# INITIAL SETTINGS
+# --------------------
+def lighten_darken(hex_normal):
+    """
+    Takes hex and a factor, converts to rgb, and returns lighter/darker hex
+    :param hex_normal: Tuple of rgb values
+    :param factor: factor for change where 0.15 = 15%
+    :return: tuple of hex conversions
+    """
+    factor = 0.15  # Degree of change
 
-# Array of Person
-people_list = []
+    # convert hex to rgb
+    hex_normal = hex_normal.lstrip('#')
+    lv = len(hex_normal)
+    r, g, b = tuple(int(hex_normal.lstrip('#')[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
+    # Darken
+    dark = (max(0, int(r-(r*(1+factor)-r))),
+            max(0, int(g-(g*(1+factor)-g))),
+            max(0, int(b-(b*(1+factor)-b))))
+    hex_dark = '#%02x%02x%02x' % dark
+
+    # Lighten
+    light = (min(255, int(r * (1+factor))),
+             min(255, int(g * (1+factor))),
+             min(255, int(b * (1+factor))))
+    hex_light = '#%02x%02x%02x' % light
+
+    return hex_dark, '#'+hex_normal, hex_light
 
 
-class Person:
-    """Person class"""
-    def __init__(self, name):
-        self.name = name
-        self.colour = ""
-       # self.movies = []
-        self.matrix = [["-" for x in range(24)] for y in range(7)]
+def load_settings():
+    """
+    Reads the settings .txt files and loads into memory
+    :return: [Lists]: seen_movies, next_movies, categories, names, chosen_colours
+    """
+    # Load the movies and categories
+    paths = ['settings/movies_seen.txt',
+             'settings/movies_next.txt',
+             'settings/categories.txt',
+             'settings/persons.txt']
+    return_data = ([], [], [], [])
+    print("Loading .txt files...")
 
-    def add_movie(self, title):
-        for x in range(7):
-            for y in range(24):
-                if self.matrix[x][y] == "-":
-                    self.matrix[x][y] = title
-                    break
-
-    def get_last(self, row):
-        for y in range(24):
-            if self.matrix[row][y] == "-":
-                return self.matrix[row][y-1]
-        return False
-
-    def remove_last(self):
-        for row in range(7):
-            for y in range(24):
-                if self.matrix[row][y] == "-":
-                    self.matrix[row][y - 1] = "-"
-
-    def get_movie(self, x, y):
-        return self.matrix[x][y]
-
-    def draw(self):
-        print("hi")
-
-    def get_save_string(self):
-        string_build = ""
-        for y in range(24):
-            for x in range(7):
-                string_build += str(self.matrix[x][y])
-                string_build += '~'
-            string_build += "\n"
-        string_build += "{}\n".format(self.name)
-        return string_build
-
-    def load(self, s):
-        lines = s.splitlines()
-        col = 0
+    # Load in seen_movies, next_movies, categories
+    for x in range(3):
+        file = open(paths[x], "r")
+        lines = [line.rstrip('\n') for line in file]
         for line in lines:
-            line_split = line.split('~')
-            for idx, movie in enumerate(line_split):
-                if idx == 7:  # Skip whitespace
-                    break
-                self.matrix[idx][col] = movie
-            col += 1
+            return_data[x].append(line)
+    return_data[2].append("OVERALL")
 
-    def move_movie(self, row, col):
-        old_mov = self.matrix[y_sav][x_sav]
-        if x_sav < row: # Distinguishes between down and up drags
-            for z in range(x_sav, row):
-                self.matrix[col][z] = self.matrix[col][z+1]
-            self.matrix[col][row] = old_mov
-        else:
-            for z in range(x_sav, row, -1):
-                self.matrix[col][z] = self.matrix[col][z-1]
-            self.matrix[col][row] = old_mov
+    # Load the people/colours
+    file = open(paths[3], "r")
+    lines = [line.rstrip('\n') for line in file]
+    for max_peep, line in enumerate(lines):
+        name_col = line.split(':')
+        hex_tup = lighten_darken(name_col[1])
+        return_data[3].append(Person(name_col[0], hex_tup))
+        for m in return_data[0]:
+            return_data[3][len(return_data[3])-1].add_movie(m)
 
-    def print(self):
-        for y in range(24):
-            string_build = ""
-            for x in range(7):
-                movie = self.matrix[x][y]
-                string_build += movie
-                lgt = len(movie)
-                for _ in range(22-lgt):
-                    string_build += " "
-            print(string_build)
+        if max_peep >= 12:
+            print("ERROR: Max people exceeded (check settings/persons.txt)")
+            return None
+    # add 'Average' player
+    return_data[3].append(Person("AVERAGE", ('@000000', '#000000', '#000000')))
 
-    def get_matrix(self):
-        return self.matrix
-
-    def get_name(self):
-        return self.name
-
-    def set_matrix(self, mtx):
-        self.matrix = mtx
-
-
-def get_current():
-    return people_list[current_person]
-
-
-def get_colour(true_colour=True):
-    if true_colour:
-        return colour_list[current_person]
-    return person_colours[current_person][0]
-
-
-# UI Setup
-
-def load_images():
-    img_paths = ["/diamonds.png", "/liveand.png", "/goldgun.png", "/spywho.png",
-                 "/moon.png", "/youreyes.png", "/octo.png", "/view.png"]
-    for p in img_paths:
-        bond_girls.append(ImageTk.PhotoImage(Image.open("girls"+p)))
-        bond_gadgets.append(ImageTk.PhotoImage(Image.open("gadgets"+p)))
-        bond_villians.append(ImageTk.PhotoImage(Image.open("villians"+p)))
-        bond_plot.append(ImageTk.PhotoImage(Image.open("plot" + p)))
-        bond_cold.append(ImageTk.PhotoImage(Image.open("coldopens" + p)))
-
-    bond_theme.append(ImageTk.PhotoImage(Image.open("themes/themes.png")))
-
-    mp3_list = ["drno", "russ", "gold", "thun", "twic", "ohmss", "diam",
-            "live", "ggun", "spyw", "moon", "fyeo", "octo", "view"]
-    for mp3 in mp3_list:
-        theme_songs.append("themes/"+mp3+".mp3")
+    return return_data
 
 
 def add_buttons():
+    """
+    Adds buttons to the GUI
+    """
     side_x_init = 1550
-    side_people = side_x_init
-    for i in range(4):
-        btn.append(Button(master, text=name_list[i], bg=colour_list[i], font=("Purisa", 20), command=lambda c=i: but_press(c)))
-        btn[i].place(x=side_people, y=100)
+    x_pos = side_x_init
+    y_pos = 10
+
+    # Add people buttons (ID 0 to 11)
+    for idx in range(num_players):
+        if idx % 4 is 0:
+            x_pos = side_x_init
+            y_pos += 60
+        p = people_list[idx]
+        btn.insert(idx, Button(master, text=p.get_name(), bg=p.get_color("norm"), font=("Purisa", 20),
+                               command=lambda c=idx: but_press(c)))
+        btn[idx].place(x=x_pos, y=y_pos)
         master.update_idletasks()
-        side_people += btn[i].winfo_width()
+        x_pos += btn[idx].winfo_width()
 
-    btn.append(Button(master, text="Add Next Movie  -->", bg="lavender", font=("Purisa", 10), command=lambda c=4: but_press(c)))
-    btn[4].place(x=side_x_init, y=800)
-    btn.append(Button(master, text="Remove Last", state="disabled", bg="lavender", font=("Purisa", 8), command=lambda c=5: but_press(c)))
-    btn[5].place(x=side_x_init+20, y=830)
+    # Fill list gaps if less that 12 people
+    for x in range(12-len(btn)):
+        btn.append(None)
 
+    # Add average (ID 12)
+    y_pos += 80
+    x_pos = side_x_init+80
+    btn.insert(12, Button(master, text="AVERAGE", bg="snow4", font=("Purisa", 25),
+                          command=lambda c=12: but_press(c)))
+    btn[12].place(x=x_pos, y=y_pos)
+
+    # Add next movie and remove last (ID 13 and 14)
+    btn.insert(13, Button(master, text="Add Next Movie  -->", bg="lavender", font=("Purisa", 10),
+                          command=lambda c=13: but_press(c)))
+    btn[13].place(x=side_x_init, y=850)
+    btn.insert(14, Button(master, text="Remove Last", state="disabled", bg="lavender", font=("Purisa", 8),
+                          command=lambda c=14: but_press(c)))
+    btn[14].place(x=side_x_init+20, y=880)
+
+    # Add Save and Load (ID 15 and 16)
+    btn.insert(15, Button(master, text="Load", bg="snow4", font=("Purisa", 10),
+                          command=lambda c=15: but_press(c)))
+    btn[15].place(x=x_pos+50, y=950)
+    btn.insert(16, Button(master, text="Save", bg="snow4", font=("Purisa", 10),
+                          command=lambda c=16: but_press(c)))
+    btn[16].place(x=x_pos+150, y=950)
+
+    # Add categories (ID 17-22)
     cat_x = side_x_init
     cat_y = 500
-    btn.append(Button(master, text="Cold Open", bg="powder blue", font=("Purisa", 15), command=lambda c=6: but_press(c)))
-    btn[6].place(x=cat_x, y=cat_y)
-    btn.append(Button(master, text="Plot", bg="MediumPurple1", font=("Purisa", 15), command=lambda c=7: but_press(c)))
-    btn[7].place(x=cat_x+200, y=cat_y)
-    btn.append(Button(master, text="Theme Song", bg="cornsilk2", font=("Purisa", 15), command=lambda c=8: but_press(c)))
-    btn[8].place(x=cat_x, y=cat_y+50)
-    btn.append(Button(master, text="Bond Girls", bg="pink", font=("Purisa", 15), command=lambda c=9: but_press(c)))
-    btn[9].place(x=cat_x+200, y=cat_y+50)
-    btn.append(Button(master, text="Gadgets", bg="tan1", font=("Purisa", 15), command=lambda c=10: but_press(c)))
-    btn[10].place(x=cat_x, y=cat_y+100)
-    btn.append(Button(master, text="Villians", bg="snow4", font=("Purisa", 15), command=lambda c=11: but_press(c)))
-    btn[11].place(x=cat_x+200, y=cat_y+100)
+    for idx, cat in enumerate(categories):
+        if idx is len(categories)-1:  # Don't add overall
+            break
+        btn.insert(idx+17, Button(master, text=cat, bg="powder blue", font=("Purisa", 15),
+                                  command=lambda c=idx+17: but_press(c)))
+        btn[idx+17].place(x=cat_x, y=cat_y)
+        cat_y += 50 if cat_x == (side_x_init+200) else 0
+        cat_x = (side_x_init+200) if cat_x == side_x_init else side_x_init
 
-    btn.append(Button(master, text="Load", bg="snow4", font=("Purisa", 10), command=lambda c=12: but_press(c)))
-    btn[12].place(x=cat_x+100, y=cat_y+450)
-    btn.append(Button(master, text="Save", bg="snow4", font=("Purisa", 10), command=lambda c=13: but_press(c)))
-    btn[13].place(x=cat_x+200, y=cat_y+450)
-
-    btn.append(Button(master, text="AVERAGE", bg="snow4", font=("Purisa", 25), command=lambda c=14: but_press(c)))
-    btn[14].place(x=side_x_init+80, y=200)
+    # Need to do this to stop top left movie dragging when on button
+    for b in btn:
+        if b is not None:
+            b.bind('<Enter>', lambda event, n='Enter': button_enter_exit(n))
+            b.bind('<Leave>', lambda event, n='Leave': button_enter_exit(n))
 
 
+def load_images_and_mp3s(movies):
+    """
+    Creates a dict of movies with list of images for each category
+    :param movies: list of movies (seen and next)
+    :return: dict
+    """
+    mp3_next = False  # Found a folder with mp3s
+    mp3_d = {}
+    img_arrays = {}
+    for m in movies:
+        img_arrays[m] = []
+    idx = 0
+    for root, subdir, files in os.walk('categories'):
+        if idx > 0:  # Skip root folder
+            for i, m in enumerate(movies):
+                if len(subdir) > 0 and subdir[0] == 'mp3':
+                    img_arrays[m].append("{}\{}".format(root, files[i]))
+                    mp3_d[len(img_arrays[m]) - 1] = {}
+                    mp3_next = True
+                else:
+                    if mp3_next is True:
+                        mp3_d[len(img_arrays[m])-1][m] = "{}\{}".format(root, files[i])
+                        # Check if end of folder
+                        if len(img_arrays) - 1 == i:
+                            mp3_next = False
+                    else:
+                        img_arrays[m].append("{}\{}".format(root, files[i]))
+        idx += 1
+
+    return img_arrays, mp3_d
+
+
+def shuffle_colours():
+    """
+    Creates random bg colours for the movies, without making them too similar
+    :return: movie_d: dict of movies to generated colours
+    """
+    movie_d = {}
+    colours = []  # List of colours used to compare new ones
+    closeness = 160  # The higher this value, the more unique the colours will be
+    threshold = 200  # The lower this number, the darker colours can be
+    attempts = 20000  # Returns what it has after it fails this many times
+
+    for mx in seen_movies + next_movies:
+        count = 0
+        while True:
+            unique = True  # Used to break out of two loops
+            count += 1  # Used to break out if taking too long
+
+            if count > attempts:  # Returns if failing for too long
+                return movie_d
+
+            rgb = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+            if (rgb[0] + rgb[1] + rgb[2]) < threshold:
+                continue
+            # Compare similarity of new colour to other ones (pretty crude, can be improved)
+            for c in colours:
+                similar_weight = 0
+                for x in range(3):
+                    difference = max(c[x], rgb[x]) - min(c[x], rgb[x])
+                    similar_weight += difference
+
+                    # Individual colours are different enough to pass
+                    if difference > closeness-(closeness/2):
+                        similar_weight += closeness
+
+                if similar_weight < closeness:
+                    unique = False
+
+            # Good colour, break out
+            if unique is True:
+                break
+
+        # Save the colour
+        colours.append(rgb)
+        #print("{} Saved: {}, {}, {}".format(mx, rgb[0], rgb[1], rgb[2]))
+        movie_d[mx] = '#%02x%02x%02x' % (rgb[0], rgb[1], rgb[2])
+    return movie_d
+# --------------------
+
+
+# --------------------
+# Live GUI Stuff
+# --------------------
 def draw(c, event=None):
+    """
+    Draw on the canvas
+    :param c: canvas
+    :param event: Event passed if dragging
+    """
     c.delete("all")
     x_s = x_fin/7
     y_s = y_fin/24
+    rect_colour = 'black'
+    person = people_list[current_person]
 
-    labels = ["Cold Open", "Theme Song", "Gadgets", "Villians", "Bond Girls", "Plot", "OVERALL"]
-
+    # Cat titles
     for _ in range(7):
         last_buff = 10 if _ == 6 else 0
-        c.create_text(b+x_s*_+x_s/2+last_buff, 10, text=labels[_], font=("Purisa", 15))
+        c.create_text(border+x_s*_+x_s/2+last_buff, 10, text=categories[_], font=("Purisa", 15))
 
+    # Each movie in the cat
+    drag_movie = None
     for yz in range(24):
         for xz in range(7):
             last_buff = 10 if xz == 6 else 0
-            x = b+x_s*xz+last_buff
-            y = b*2+y_s*yz
-            movie = get_current().get_movie(xz, yz)
-            drag_movie = get_current().get_movie(y_sav, x_sav)
-            # Average is done a little different
-            if current_person == 4:
-                for clr in movie_colours.keys():
-                    #print("%s   %s" % (clr, movie))
-                    if clr in movie:
-                        rect_colour = movie_colours[clr]
+            x = border+x_s*xz+last_buff
+            y = border*2+y_s*yz
+
+            movie = person.get_movie(xz, yz)
+            drag_movie = person.get_movie(y_sav, x_sav)
+
+            # Don't draw movie being dragged
+            if event is not None and movie == drag_movie and y_sav == xz:
+                movie = ''
+
+            # Average is done a little different (the actual title has numbers in the name so it messes)
+            if current_person == num_players:  # Is Average player
+                for mov_title in movie_dict.keys():
+                    if len(mov_title) > 14:
+                        cut_title = mov_title[:14]
+                    else:
+                        cut_title = mov_title
+                    if cut_title in movie:
+                        rect_colour = movie_dict[mov_title]
                         break
                     else:
                         rect_colour = "gainsboro"
             else:
-                if movie in connery:
-                    rect_colour = person_colours[current_person][0]
-                elif movie in next_movie:
-                    rect_colour = person_colours[current_person][1]
+                if movie in seen_movies:
+                    rect_colour = person.get_color("dark")
+                elif movie in next_movies:
+                    rect_colour = person.get_color("light")
                 else:
                     rect_colour = "gainsboro"
             c.create_rectangle(x, y, x + x_s, y + y_s, fill=rect_colour)
@@ -236,151 +298,56 @@ def draw(c, event=None):
 
     # Mouse drags
     if event is not None:
-        if drag_movie in connery:
-            rect_colour = person_colours[current_person][0]
-        elif drag_movie in next_movie:
-            rect_colour = person_colours[current_person][1]
+        if drag_movie in seen_movies:
+            rect_colour = person.get_color("dark")
+        elif drag_movie in next_movies:
+            rect_colour = person.get_color("light")
         else:
             rect_colour = "gainsboro"
-        c.create_rectangle(event.x-(x_s/2), event.y-(y_s/2), event.x-(x_s/2)+x_s, event.y-(y_s/2)+y_s, fill=rect_colour)  # , fill="black")
+        c.create_rectangle(event.x-(x_s/2), event.y-(y_s/2), event.x-(x_s/2)+x_s, event.y-(y_s/2)+y_s, fill=rect_colour)
         c.create_text(event.x, event.y, text=drag_movie, font=("Purisa", 15))
 
-    c.create_text(1715, 45, text=name_list[current_person], fill=get_colour(), font=("Purisa", 25))
-    c.create_rectangle(1530,450,1880,660)  # , fill="black")
+    # Text
+    c.create_text(1715, 45, text=person.get_name(), fill=person.get_color("norm"), font=("Purisa", 25))
+    c.create_rectangle(1530, 450, 1880, 660)
     c.create_text(1705, 470, text="RECAP", font=("Purisa", 20))
-    c.create_text(1800, 812, text=next_movie[next_c], fill="black", font=("Purisa", 15))
+    next_movie = next_movies[next_c] if next_c < len(next_movies) else '---'
+    c.create_text(1800, 860, text=next_movie, fill="black", font=("Purisa", 15))
+
     c.pack()
 
 
-# GUI Reactions
 def reset_add():
-    if next_c == len(next_movie) - 1:
-        btn[4].config(state="disabled")
-        btn[5].config(state="normal")
+    """
+    Disables the movie add/remove buttons when at one end
+    """
+    if next_c == len(next_movies):
+        btn[13].config(state="disabled")
+        btn[14].config(state="normal")
     elif next_c == 0:
-        btn[4].config(state="normal")
-        btn[5].config(state="disabled")
+        btn[13].config(state="normal")
+        btn[14].config(state="disabled")
+        btn[15].config(state="normal")
     else:
-        btn[4].config(state="normal")
-        btn[5].config(state="normal")
-
-
-def but_press(i):
-    global next_c
-    global next_movie
-
-    if i < 4:
-        global current_person
-        current_person = i
-        save(True)  # Auto-save
-    elif i == 4:
-        for p in range(4):
-            people_list[p].add_movie(next_movie[next_c])
-        next_c += 1
-        reset_add()
-    elif i == 5:
-        last = next_movie[next_c-1]
-        for p in range(4):
-            for row in range(7):
-                if people_list[p].get_last(row) != last:
-                    return
-        for p in range(4):
-            people_list[p].remove_last()
-        next_c -= 1
-        if next_c == 0:
-            btn[i].config(state="disabled")
-        else:
-            btn[4].config(state="normal")
-    elif i == 6:
-        recap("cold")
-    elif i == 7:
-        recap("plot")
-    elif i == 8:
-        recap("theme")
-    elif i == 9:
-        recap("girls")
-    elif i == 10:
-        recap("gadgets")
-    elif i == 11:
-        recap("villians")
-    elif i == 12:
-        load()
-    elif i == 13:
-        save()
-    elif i == 14:  # Average person
-        current_person = 4
-        update_average()
-    return
-
-
-def recap(type_s):
-    if type_s is "girls":
-        disp_list = bond_girls
-    elif type_s is "gadgets":
-        disp_list = bond_gadgets
-    elif type_s is "villians":
-        disp_list = bond_villians
-    elif type_s is "plot":
-        disp_list = bond_plot
-    elif type_s is "cold":
-        disp_list = bond_cold
-    elif type_s is "theme":
-        disp_list = bond_theme
-    else:
-        return
-
-    win = tk.Toplevel()
-
-    # Slightly different for theme, as only one image
-    idx = 0 if type_s == "theme" else next_c
-
-    w = disp_list[idx].width()
-    h = disp_list[idx].height()
-    win.geometry("%dx%d+%d+%d" % (w, h, 0, 0))
-
-    photo = disp_list[idx]
-    label = tk.Label(win, image=photo)
-    label.image = photo
-    label.pack()
-
-    if type_s == "theme":
-        for x in range(7+next_c):
-            b = Button(win, text="Play", bg="powder blue", font=("Purisa", 15), command=lambda c=x: play_song(c))
-            x_loc = 30 + 115 * x if x < 7 else 30 + 115 * (x-7)
-            y_loc = 180 if x < 7 else 460
-            b.place(x=x_loc, y=y_loc)
-        b = Button(win, text="Stop", bg="light coral", font=("Purisa", 15), command=lambda: stop_song())
-        b.place(x=860, y=200)
-
-    close = Button(win, text="CLOSE", bg="red", font=("Purisa", 12),
-                       command=lambda c=c: win.destroy())
-    close.place(x=w - 100, y=20)
-
-
-def play_song(x):
-    mixer.init()
-    mixer.music.load(theme_songs[x])
-    mixer.music.play()
-
-
-def stop_song(win=None):
-    if win is not None:
-        win.destroy()
-    mixer.music.fadeout(500)
+        btn[14].config(state="normal")
+        btn[13].config(state="normal")
+        btn[15].config(state="disabled")
 
 
 def update_average():
+    """
+    Updates the 'average' person based on other player picks
+    """
     sorted_matrix = [["-" for x in range(24)] for y in range(7)]
-    movie_dict = {}
-    for m in connery:
-        movie_dict[m] = 0.0
+    movie_avg_dict = {}
+    for m in seen_movies:
+        movie_avg_dict[m] = 0.0
     for x in range(next_c):
-        movie_dict[next_movie[x]] = 0.0
+        movie_avg_dict[next_movies[x]] = 0.0
 
     # Work one column at a time
-    temp_dict = movie_dict
+    temp_dict = movie_avg_dict
     for x in range(7):
-       # print("\n\nFIrst")
         # Clear dict for the next round
         for m in temp_dict:
             temp_dict.update({m: 0.0})
@@ -396,7 +363,7 @@ def update_average():
                 temp_dict.update(new)
 
         for m in temp_dict:
-            new = {m: temp_dict[m]/4+1}
+            new = {m: round(temp_dict[m]/num_players+1, 1)}
             temp_dict.update(new)
 
         # Sort dict, and set the average matrix up (also setup colour dict)
@@ -412,11 +379,93 @@ def update_average():
             sorted_matrix[x][col] = title
 
     # Finally, set the matrix
-    people_list[4].set_matrix(sorted_matrix)
+    people_list[num_players].set_matrix(sorted_matrix)  # Set average matrix
+# --------------------
 
 
+# --------------------
+# Button presses and recap
+# --------------------
+def but_press(i):
+    """
+    Deals with the various GUI buttons
+    :param i: ID of pressed buttons
+    :return: nothing
+    """
+    global next_c
+    global next_movies
+    global current_person
+    global movie_dict
+
+    # Change current player
+    if i < 12:
+        current_person = i
+    elif i == 12:
+        if current_person == num_players:
+            movie_dict = shuffle_colours()
+        else:
+            update_average()
+            current_person = num_players  # Average player
+    # Add/Remove next movie
+    elif i == 13 or i == 14:
+        if i == 13:  # Add
+            for p in range(num_players):
+                people_list[p].add_movie(next_movies[next_c])
+            next_c += 1
+        else:  # Remove
+            last = next_movies[next_c-1]
+            for p in range(num_players):  # Check all players if valid removal
+                for row in range(7):
+                    if people_list[p].get_last(row) != last:
+                        return
+            for p in range(num_players):  # Remove it
+                people_list[p].remove_last()
+            next_c -= 1
+        update_average()
+        reset_add()  # Add/remove button disable/enable
+    # Save and Load
+    elif i == 15:
+        load()
+    elif i == 16:
+        save()
+    # Recap
+    elif i > 16:
+        recap(i)
+    save(True)  # Autosave
+    return
+
+
+# width, person, draw_movies, cat_images):
+def recap(i):
+    if current_person == num_players:
+        return
+    cat = i-17
+    draw_movies = []
+
+    w = 300 * (24/4)
+
+    for x in range(24):
+        draw_movies.append(people_list[current_person].get_movie(cat, x))
+
+    if cat in mp3_dict:
+        RecapWindow(people_list[current_person], w, draw_movies, cat_images, cat, categories[cat], mp3_dict[cat])
+    else:
+        RecapWindow(people_list[current_person], w, draw_movies, cat_images, cat, categories[cat])
+
+
+
+def button_enter_exit(cmnd):
+    global drag_on
+    if cmnd == 'Enter':
+        drag_on = False
+    else:
+        drag_on = True
+# --------------------
+
+
+# --------------------
 # Mouse stuff
-
+# --------------------
 def get_pos(event):
     x_pos, y_pos = event.x, event.y
     row = 0
@@ -425,12 +474,12 @@ def get_pos(event):
     box_y = y_fin / 24
     box_x = x_fin/7
     for y in range(24, -1, -1):
-        if y_pos > box_y*y+b*2:
+        if y_pos > box_y*y+border*2:
             row = y
             break
 
     for x in range(7, -1, -1):
-        if x_pos > b+box_x*x:
+        if x_pos > border+box_x*x:
             col = x
             break
     return row, col
@@ -446,38 +495,56 @@ def left_click(event):
 
 def left_release(event):
     x_pos, y_pos = get_pos(event)
-    if y_pos != y_sav or y_sav > 6 or y_pos > 6 or current_person == 4:
-        draw(c)
+    if y_pos != y_sav or y_sav > 6 or y_pos > 6 or current_person == num_players:  # Average player
+        draw(canv)
         return
     else:
-        get_current().move_movie(x_pos, y_pos)
-    draw(c)
+        people_list[current_person].move_movie(x_pos, y_pos, x_sav, y_sav)
+    draw(canv)
 
 
 def left_drag(event):
-    if current_person == 4:
+    if current_person == num_players:  # Average player
         return
-    if event.x < 1500:
-        draw(c, event)
+    if event.x < 1500 and drag_on is True:
+        draw(canv, event)
+# --------------------
 
 
-# Save and Load
-
+# --------------------
+# Save and load
+# --------------------
 def save(auto_save=False):
-    if auto_save:
-        file_name = "saves/auto_save.txt"
-    else:
-        file_name = "saves/%s.txt" % time.strftime("%Y%m%d-%H%M%S")
+    """
+    Saves the players and their movies into text file
+    :param auto_save: Adjusts the file_name when true
+    """
+    file_name = "saves/auto_save.txt" if auto_save else "saves/%s.txt" % time.strftime("%Y%m%d-%H%M%S")
     text_file = open(file_name, "w")
+
+    # Get a list of player names
+    names = []
+    for p in people_list:
+        names.append(p.get_name())
+
+    # Write load settings to top of file
     text_file.write("{}\n".format(check_code))
+    text_file.write("{}\n".format(names))
+    text_file.write("{}\n".format(categories))
+    text_file.write("{}\n".format(seen_movies))
+    text_file.write("{}\n".format(next_movies))
     text_file.write("%d\n" % next_c)
-    for x in range(4):
+
+    # Save players
+    for x in range(num_players):
         p = people_list[x]
         text_file.write(p.get_save_string())
 
 
 def load():
-    print("Loading...")
+    """
+    Loads players from a .txt file
+    """
     file_path = filedialog.askopenfilename()
 
     # Check for wrong file type
@@ -488,10 +555,15 @@ def load():
     file = open(file_path, "r")
     lines = [line.rstrip('\n') for line in file]
 
-    # Check for wrong save file
+    # Confirm check code
     if len(lines) == 0 or lines[0] != check_code:
         print("ERROR: Bad save file")
         return
+
+    # Get list of player names
+    names = []
+    for p in people_list:
+        names.append(p.get_name())
 
     build_string = ""
     global next_c
@@ -501,42 +573,66 @@ def load():
         if idx == 0:
             continue
 
-        # Add movies as required
+        # Check settings mismatch
         if idx == 1:
-            next_c = int(lines[idx])
-            reset_add()
+            if lines[idx] != str(names):
+                print("LOAD ERROR: Names mismatch settings")
+                return False
             continue
+        if idx == 2:
+            if lines[idx] != str(categories):
+                print("LOAD ERROR: Categories mismatch settings")
+                return False
+            continue
+
+        # Check if reloading without new movies
+        if idx == 3:
+            compare1 = str(lines[idx]+lines[idx + 1]).replace("][", ", ")
+            if lines[idx] == str(seen_movies) and lines[idx+1] == str(next_movies):
+                print("Loading previous state")
+                next_c = int(lines[idx+2])
+                reset_add()
+            # Else check if next phase of marathon
+            elif compare1 == str(seen_movies):
+                print("Loading next phase")
+            else:
+                print("LOAD ERROR: Movie settings mismatch")
+                return
+            continue
+
         # Check if end of load string, else keep building string
-        for x in range(4):
-            if line == name_list[x]:
-                people_list[x].load(build_string)
-                build_string = ""
-                skip = True
-                continue
-        if not skip:
-            build_string += "%s\n" % line
-    print("Done!")
+        if idx >= 6:
+            for x in range(len(names)):
+                if line == names[x]:
+                    people_list[x].load(build_string)
+                    build_string = ""
+                    skip = True  # Skips on last person
+                    continue
+            if not skip:
+                build_string += "%s\n" % line
+    print("Loaded")
+# --------------------
 
 
 # Main
+drag_on = True  # Cannot drag when False
 btn = []
+current_person = 0
+next_c = 0
+seen_movies, next_movies, categories, people_list = load_settings()
+cat_images, mp3_dict = load_images_and_mp3s((seen_movies+next_movies))
+num_players = len(people_list)-1  # Number of actual players (and idx of Average)
+
+# Setup random colours for movies (used by 'Average')
+movie_dict = shuffle_colours()
+
+# Czreat tk, canvas etc
 master = Tk()
 master.winfo_toplevel().title("Bond Ranker")
-c = Canvas(master, width=1920, height=1080)
-
-for p in range(5):
-    people_list.append(Person(name_list[p]))
-for m in connery:
-    for p in range(5):
-        people_list[p].add_movie(m)
-current_person = 0
-
-load_images()
-
+canv = Canvas(master, width=1920, height=1080)
 master.bind('<Button-1>',  left_click)
 master.bind('<ButtonRelease-1>',  left_release)
 master.bind('<B1-Motion>',  left_drag)
 add_buttons()
-
-draw(c)
-c.mainloop()
+draw(canv)
+canv.mainloop()
