@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c8a1c5e-6887-49a3-abc3-b585e621f365" name="Default" comment="" />
+    <list default="true" id="2c8a1c5e-6887-49a3-abc3-b585e621f365" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recap.py" beforeDir="false" afterPath="$PROJECT_DIR$/recap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saves/auto_save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/saves/auto_save.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/persons.txt" beforeDir="false" afterPath="$PROJECT_DIR$/settings/persons.txt" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,11 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2057">
-              <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-              <folding>
-                <element signature="e#1#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="490">
+              <caret line="530" column="43" selection-start-line="530" selection-start-column="43" selection-end-line="530" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -25,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3638">
-              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+            <state relative-caret-position="170">
+              <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="66" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -37,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
+            <state relative-caret-position="25024">
               <caret line="1475" selection-start-line="1475" selection-end-line="1475" />
             </state>
           </provider>
@@ -46,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/venv/bond_venv/Lib/site-packages/PIL/Image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
+            <state relative-caret-position="44676">
               <caret line="2633" selection-start-line="2633" selection-end-line="2633" />
             </state>
           </provider>
@@ -55,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/person.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            <state relative-caret-position="211">
+              <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -113,21 +116,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/person.py" />
         <option value="$PROJECT_DIR$/../renamer.py" />
         <option value="$PROJECT_DIR$/dict.py" />
         <option value="$PROJECT_DIR$/Person.py" />
         <option value="$PROJECT_DIR$/dd.py" />
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/Recap.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/recap.py" />
+        <option value="$PROJECT_DIR$/person.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="524" />
-    <option name="y" value="36" />
+    <option name="x" value="-7" />
+    <option name="y" value="45" />
     <option name="width" value="1092" />
     <option name="height" value="1002" />
   </component>
@@ -286,7 +289,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="524" y="36" width="1092" height="1002" extended-state="0" />
+    <frame x="-7" y="45" width="1092" height="1002" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18406072" />
@@ -294,7 +297,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32839224" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5319532" weight="0.15535098" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5319532" visible="true" weight="0.15535098" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.22094361" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,51 +347,42 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dict.py" />
-    <entry file="file://$PROJECT_DIR$/dd.py">
+    <entry file="file://$PROJECT_DIR$/dd.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+        <state relative-caret-position="25024">
+          <caret line="1475" selection-start-line="1475" selection-end-line="1475" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/venv/bond_venv/Lib/site-packages/PIL/Image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
+        <state relative-caret-position="44676">
           <caret line="2633" selection-start-line="2633" selection-end-line="2633" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/person.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="1475" selection-start-line="1475" selection-end-line="1475" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/recap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3638">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        <state relative-caret-position="170">
+          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="66" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/person.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2057">
-          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-          <folding>
-            <element signature="e#1#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="490">
+          <caret line="530" column="43" selection-start-line="530" selection-start-column="43" selection-end-line="530" selection-end-column="43" />
         </state>
       </provider>
     </entry>

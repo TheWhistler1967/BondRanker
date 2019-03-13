@@ -167,6 +167,10 @@ def add_buttons():
         cat_y += 50 if cat_x == (side_x_init+200) else 0
         cat_x = (side_x_init+200) if cat_x == side_x_init else side_x_init
 
+    # Add close window
+    b = Button(master, text="Save and Exit", bg="#DD3F3F", font=("Purisa", 10), command=close_window)
+    b.place(x=1700, y=1000)
+
     # Need to do this to stop top left movie dragging when on button
     for b in btn:
         if b is not None:
@@ -491,13 +495,17 @@ def recap(i):
         RecapWindow(people_list[current_person], w, draw_movies, cat_images, cat, categories[cat])
 
 
-
 def button_enter_exit(cmnd):
     global drag_on
     if cmnd == 'Enter':
         drag_on = False
     else:
         drag_on = True
+
+
+def close_window():
+    save()
+    master.destroy()
 # --------------------
 
 
@@ -520,6 +528,9 @@ def get_pos(event):
         if x_pos > border+box_x*x:
             col = x
             break
+    # Dragging too low
+    if row >= len(all_movies):
+        row = len(all_movies)-1
     return row, col
 
 
@@ -542,6 +553,8 @@ def left_release(event):
 
 
 def left_drag(event):
+    global toggle_static
+    toggle_static = False
     if current_person == num_players:  # Average player
         return
     if event.x < 1500 and drag_on is True:
@@ -651,6 +664,9 @@ def load():
     print("Loaded")
 # --------------------
 
+def __callback():
+    return
+
 
 # Main
 drag_on = True  # Cannot drag when False
@@ -674,6 +690,8 @@ for x in range(len(all_movies)):
 # Czreat tk, canvas etc
 master = Tk()
 master.winfo_toplevel().title("Bond Ranker")
+master.wm_attributes("-topmost", 1)
+master.protocol("WM_DELETE_WINDOW", __callback)
 canv = Canvas(master, width=1920, height=1080)
 master.bind('<Button-1>',  left_click)
 master.bind('<ButtonRelease-1>',  left_release)

@@ -34,6 +34,8 @@ class RecapWindow:
         self.canv.configure(bg='gainsboro')
         self.master.bind('<KeyRelease>', self.key_handler)
         self.master.bind('<MouseWheel>', self.scroll)
+        self.master.wm_attributes("-topmost", 1)
+       # self.master.protocol("WM_DELETE_WINDOW", self.__callback)
 
         # Used for scrolling
         self.scroll_up = False
@@ -45,6 +47,10 @@ class RecapWindow:
         # Select the last movie
         if not self.mp3_folder:  # True is initial call, deals with placement button bug
             self.on_click(self.selected)
+
+    @staticmethod
+    def __callback():
+        return
 
     def draw(self):
         resize_w = 240

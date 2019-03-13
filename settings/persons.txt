@@ -1,4 +1,4 @@
-Nick:#c45858
+Nick:#FF7575
 Graham:#EEA700
 Cindy:#00A700
-Stu:#0060B4
+Stu:#6464FF
