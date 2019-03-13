@@ -61,8 +61,9 @@ def load_settings():
     paths = ['settings/movies_seen.txt',
              'settings/movies_next.txt',
              'settings/categories.txt',
-             'settings/persons.txt']
-    return_data = ([], [], [], [])
+             'settings/persons.txt',
+             'settings/movies_custom_colours.txt']
+    return_data = ([], [], [], [], [])
     print("Loading .txt files...")
 
     # Load in seen_movies, next_movies, categories
@@ -82,12 +83,18 @@ def load_settings():
         return_data[3].append(Person(name_col[0], hex_tup))
         for m in return_data[0]:
             return_data[3][len(return_data[3])-1].add_movie(m)
-
         if max_peep >= 12:
             print("ERROR: Max people exceeded (check settings/persons.txt)")
             return None
+
     # add 'Average' player
     return_data[3].append(Person("AVERAGE", ('@000000', '#000000', '#000000')))
+
+    # Create list of custom colours:
+    file = open(paths[4], "r")
+    lines = [line.rstrip('\n') for line in file]
+    for c in lines:
+        return_data[4].append(c)
 
     return return_data
 
@@ -123,31 +130,40 @@ def add_buttons():
                           command=lambda c=12: but_press(c)))
     btn[12].place(x=x_pos, y=y_pos)
 
-    # Add next movie and remove last (ID 13 and 14)
-    btn.insert(13, Button(master, text="Add Next Movie  -->", bg="lavender", font=("Purisa", 10),
+    # Add toggle
+    y_pos += 80
+    x_pos = side_x_init+80
+    btn.insert(13, Button(master, text="Toggle", bg="#FFFFE0", font=("Purisa", 15),
                           command=lambda c=13: but_press(c)))
-    btn[13].place(x=side_x_init, y=850)
-    btn.insert(14, Button(master, text="Remove Last", state="disabled", bg="lavender", font=("Purisa", 8),
+    btn[13].place(x=x_pos+53, y=y_pos+30)
+    if len(custom_colours) < len(seen_movies+next_movies):
+        btn[13].place_forget()
+
+    # Add next movie and remove last (ID 14 and 15)
+    btn.insert(14, Button(master, text="Add Next Movie  -->", bg="lavender", font=("Purisa", 10),
                           command=lambda c=14: but_press(c)))
-    btn[14].place(x=side_x_init+20, y=880)
-
-    # Add Save and Load (ID 15 and 16)
-    btn.insert(15, Button(master, text="Load", bg="snow4", font=("Purisa", 10),
+    btn[14].place(x=side_x_init, y=850)
+    btn.insert(15, Button(master, text="Remove Last", state="disabled", bg="lavender", font=("Purisa", 8),
                           command=lambda c=15: but_press(c)))
-    btn[15].place(x=x_pos+50, y=950)
-    btn.insert(16, Button(master, text="Save", bg="snow4", font=("Purisa", 10),
-                          command=lambda c=16: but_press(c)))
-    btn[16].place(x=x_pos+150, y=950)
+    btn[15].place(x=side_x_init+20, y=880)
 
-    # Add categories (ID 17-22)
+    # Add Save and Load (ID 16 and 17)
+    btn.insert(16, Button(master, text="Load", bg="snow4", font=("Purisa", 10),
+                          command=lambda c=16: but_press(c)))
+    btn[16].place(x=x_pos+50, y=950)
+    btn.insert(17, Button(master, text="Save", bg="snow4", font=("Purisa", 10),
+                          command=lambda c=17: but_press(c)))
+    btn[17].place(x=x_pos+150, y=950)
+
+    # Add categories (ID 18-23)
     cat_x = side_x_init
     cat_y = 500
     for idx, cat in enumerate(categories):
         if idx is len(categories)-1:  # Don't add overall
             break
-        btn.insert(idx+17, Button(master, text=cat, bg="powder blue", font=("Purisa", 15),
-                                  command=lambda c=idx+17: but_press(c)))
-        btn[idx+17].place(x=cat_x, y=cat_y)
+        btn.insert(idx+18, Button(master, text=cat, bg="powder blue", font=("Purisa", 15),
+                                  command=lambda c=idx+18: but_press(c)))
+        btn[idx+18].place(x=cat_x, y=cat_y)
         cat_y += 50 if cat_x == (side_x_init+200) else 0
         cat_x = (side_x_init+200) if cat_x == side_x_init else side_x_init
 
@@ -190,7 +206,7 @@ def load_images_and_mp3s(movies):
     return img_arrays, mp3_d
 
 
-def shuffle_colours():
+def shuffle_colours(list_m):
     """
     Creates random bg colours for the movies, without making them too similar
     :return: movie_d: dict of movies to generated colours
@@ -201,7 +217,7 @@ def shuffle_colours():
     threshold = 200  # The lower this number, the darker colours can be
     attempts = 20000  # Returns what it has after it fails this many times
 
-    for mx in seen_movies + next_movies:
+    for mx in list_m:
         count = 0
         while True:
             unique = True  # Used to break out of two loops
@@ -287,12 +303,18 @@ def draw(c, event=None):
                     else:
                         rect_colour = "gainsboro"
             else:
-                if movie in seen_movies:
-                    rect_colour = person.get_color("dark")
-                elif movie in next_movies:
-                    rect_colour = person.get_color("light")
+                if toggle_static:
+                    if movie in static_colours:
+                        rect_colour = static_colours[movie]
+                    else:
+                        rect_colour = "gainsboro"
                 else:
-                    rect_colour = "gainsboro"
+                    if movie in seen_movies:
+                        rect_colour = person.get_color("dark")
+                    elif movie in next_movies:
+                        rect_colour = person.get_color("light")
+                    else:
+                        rect_colour = "gainsboro"
             c.create_rectangle(x, y, x + x_s, y + y_s, fill=rect_colour)
             c.create_text(x+x_s+(x-(x+x_s/2)), y+y_s+(y-(y+y_s/2)), text=movie, font=("Purisa", 15))
 
@@ -322,16 +344,16 @@ def reset_add():
     Disables the movie add/remove buttons when at one end
     """
     if next_c == len(next_movies):
-        btn[13].config(state="disabled")
-        btn[14].config(state="normal")
-    elif next_c == 0:
-        btn[13].config(state="normal")
         btn[14].config(state="disabled")
         btn[15].config(state="normal")
-    else:
+    elif next_c == 0:
         btn[14].config(state="normal")
-        btn[13].config(state="normal")
         btn[15].config(state="disabled")
+        btn[16].config(state="normal")
+    else:
+        btn[15].config(state="normal")
+        btn[14].config(state="normal")
+        btn[16].config(state="disabled")
 
 
 def update_average():
@@ -396,19 +418,32 @@ def but_press(i):
     global next_movies
     global current_person
     global movie_dict
+    global toggle_static
+    global shuffled_colours
 
     # Change current player
     if i < 12:
         current_person = i
     elif i == 12:
         if current_person == num_players:
-            movie_dict = shuffle_colours()
+            shuffled_colours = shuffle_colours(seen_movies+next_movies)
+            movie_dict = shuffled_colours
         else:
+            x = btn[12].winfo_rootx()
+            y = btn[12].winfo_rooty()
             update_average()
             current_person = num_players  # Average player
+    # Toggle static
+    elif i == 13:
+        if toggle_static is False:
+            movie_dict = static_colours
+            toggle_static = True
+        else:
+            movie_dict = shuffled_colours
+            toggle_static = False
     # Add/Remove next movie
-    elif i == 13 or i == 14:
-        if i == 13:  # Add
+    elif i == 14 or i == 15:
+        if i == 14:  # Add
             for p in range(num_players):
                 people_list[p].add_movie(next_movies[next_c])
             next_c += 1
@@ -424,14 +459,17 @@ def but_press(i):
         update_average()
         reset_add()  # Add/remove button disable/enable
     # Save and Load
-    elif i == 15:
-        load()
     elif i == 16:
+        load()
+    elif i == 17:
         save()
     # Recap
-    elif i > 16:
+    elif i >= 18:
         recap(i)
-    save(True)  # Autosave
+
+    if i >= 14:
+        toggle_static = False
+    save(True)  # Auto save
     return
 
 
@@ -439,7 +477,7 @@ def but_press(i):
 def recap(i):
     if current_person == num_players:
         return
-    cat = i-17
+    cat = i-18
     draw_movies = []
 
     w = 300 * (24/4)
@@ -619,12 +657,19 @@ drag_on = True  # Cannot drag when False
 btn = []
 current_person = 0
 next_c = 0
-seen_movies, next_movies, categories, people_list = load_settings()
+seen_movies, next_movies, categories, people_list, custom_colours = load_settings()
 cat_images, mp3_dict = load_images_and_mp3s((seen_movies+next_movies))
 num_players = len(people_list)-1  # Number of actual players (and idx of Average)
 
 # Setup random colours for movies (used by 'Average')
-movie_dict = shuffle_colours()
+toggle_static = False
+shuffled_colours = shuffle_colours(seen_movies + next_movies)
+movie_dict = shuffled_colours
+# Setup static colours for movies *used by 'Average')
+all_movies = seen_movies+next_movies
+static_colours = {}
+for x in range(len(all_movies)):
+    static_colours[all_movies[x]] = custom_colours[x]
 
 # Czreat tk, canvas etc
 master = Tk()

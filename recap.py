@@ -7,7 +7,6 @@ with contextlib.redirect_stdout(None):
 
 
 class RecapWindow:
-
     def __init__(self, p, width, draw_movies, cat_images, cat, title, mp3_dict=None):
         self.label_img = []
         self.label_txt = []
@@ -68,8 +67,6 @@ class RecapWindow:
                         command=lambda cmd='Stop':self.mp3_ctrl(cmd))
             self.mp3_buttons.append(b2)
             b2.place_forget()
-
-
 
         # Draw movies
         for idx, m in enumerate(self.draw_movies):
@@ -192,8 +189,8 @@ class RecapWindow:
         else:
             x_pos = self.label_img[self.selected].winfo_rootx()
             y_pos = self.label_img[self.selected].winfo_rooty()
-            self.mp3_buttons[0].place(x=x_pos-20, y=y_pos+100)
-            self.mp3_buttons[1].place(x=x_pos+20, y=y_pos+100)
+            self.mp3_buttons[0].place(x=x_pos-18, y=y_pos+100)
+            self.mp3_buttons[1].place(x=x_pos+18, y=y_pos+100)
 
     def key_handler(self, event):
         if self.selected == -1:
