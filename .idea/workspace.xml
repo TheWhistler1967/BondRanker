@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c8a1c5e-6887-49a3-abc3-b585e621f365" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/categories/cat1/q.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/categories/cat1/q.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/a.png" beforeDir="false" afterPath="$PROJECT_DIR$/categories/cat4/a.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/g.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/h.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/i.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/j.png" beforeDir="false" afterPath="$PROJECT_DIR$/categories/cat4/j.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/k.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/l.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/m.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/o.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/p.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/q.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/cat4/t.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recap.py" beforeDir="false" afterPath="$PROJECT_DIR$/recap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saves/auto_save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/saves/auto_save.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-374">
-              <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state relative-caret-position="-2057">
+              <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
               <folding>
                 <element signature="e#1#10#0" expanded="true" />
               </folding>
@@ -408,8 +386,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        <state relative-caret-position="-2057">
+          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
           <folding>
             <element signature="e#1#10#0" expanded="true" />
           </folding>
